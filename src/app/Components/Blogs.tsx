@@ -21,11 +21,14 @@ const Blogs = () => {
     <div className="flex flex-col md:flex-row md:space-x-6 mt-8 space-y-8 md:space-y-0 justify-center items-center px-4">
       {/* Post 1 */}
       <div className="w-full md:w-1/3 text-center">
-        <img
-          src="/img1.jpg"
+
+      <img  src="/img1.jpg"
           alt="Blog Image 1"
-          className="rounded-lg w-full h-64 object-cover"
-        />
+          className="rounded-lg w-full h-64 object-cover" />
+       
+       
+        
+         
         <p className="mt-4 text-lg font-semibold">
           Going all-in with millennial design
         </p>
