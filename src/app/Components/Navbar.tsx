@@ -14,14 +14,14 @@ function Navbar() {
     <nav className="bg-[#FBEBB5] text-black p-4">
       <div className="container mx-auto flex justify-between items-center">
         <h1>
-          
+
         </h1>
       
 
         {/* Desktop Links */}
         <div className="hidden md:flex-grow md:block text-center">
           <ul className="flex justify-center space-x-6">
-            <li><a href="#" className="hover:text-black">Home</a></li>
+            <li><a href="/" className="hover:text-black">Home</a></li>
             <li><a href="/Shop" className="hover:text-black">Shop</a></li>
             <li><a href="#" className="hover:text-black">About</a></li>
             <li><a href="/Contact" className="hover:text-black">Contact</a></li>

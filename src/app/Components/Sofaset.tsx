@@ -8,7 +8,7 @@ const Sofaset = () => {
         
         <div className="flex flex-col items-center">
           <img
-            src="/sofa7.png"
+            src="/images/sofa7.png"
             alt="Side Table"
             className="w-full h-full object-cover"
           />

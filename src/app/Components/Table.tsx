@@ -8,7 +8,7 @@ const Table = () => {
         
         <div className="flex flex-col items-center">
           <img
-            src="/sofa4.png"
+            src="/images/sofa4.png"
             alt="Side Table"
             className="w-64 h-64 object-cover"
           />
@@ -27,7 +27,7 @@ const Table = () => {
         
         <div className="flex flex-col items-center">
           <img
-            src="sofa.png"
+            src="/images/sofa.png"
             alt="Sofa"
             className="w-64 h-64 object-cover"
           />

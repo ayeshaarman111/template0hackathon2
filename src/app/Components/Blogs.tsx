@@ -22,7 +22,7 @@ const Blogs = () => {
       {/* Post 1 */}
       <div className="w-full md:w-1/3 text-center">
 
-      <img  src="/img1.jpg"
+      <img  src="/images/img1.jpg"
           alt="Blog Image 1"
           className="rounded-lg w-full h-64 object-cover" />
        
@@ -48,7 +48,7 @@ const Blogs = () => {
       {/* Post 2 */}
       <div className="w-full md:w-1/3 text-center">
         <img
-          src="/img2.jpg"
+          src="/images/img2.jpg"
           alt="Blog Image 2"
           className="rounded-lg w-full h-64 object-cover"
         />
@@ -71,7 +71,7 @@ const Blogs = () => {
       {/* Post 3 */}
       <div className="w-full md:w-1/3 text-center">
         <img
-          src="/img3.jpg"
+          src="/images/img3.jpg"
           alt="Blog Image 3"
           className="rounded-lg w-full h-64 object-cover"
         />

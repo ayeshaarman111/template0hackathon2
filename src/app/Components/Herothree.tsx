@@ -22,7 +22,7 @@ const Herothree = () => {
           {/* Post 1 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofaone.png"
+              src="/images/sofaone.png"
               alt="sofaone"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -36,7 +36,7 @@ const Herothree = () => {
           {/* Post 2 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofatwo.png"
+              src="/images/sofatwo.png"
               alt="sofatwo"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -50,7 +50,7 @@ const Herothree = () => {
           {/* Post 3 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofathree.png"
+              src="/images/sofathree.png"
               alt="sofathree"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -67,7 +67,7 @@ const Herothree = () => {
          {/* post 4*/}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofafour.png"
+              src="/images/sofafour.png"
               alt="sofafour"
               className="rounded-lg w-full h-64 object-cover"
             />

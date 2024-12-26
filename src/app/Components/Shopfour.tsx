@@ -10,7 +10,7 @@ const Shopfour = () => {
           {/* Post 1 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofaone.png"
+              src="/images/sofaone.png"
               alt="sofaone"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -24,7 +24,7 @@ const Shopfour = () => {
           {/* Post 2 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofatwo.png"
+              src="/images/sofatwo.png"
               alt="sofatwo"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -38,7 +38,7 @@ const Shopfour = () => {
           {/* Post 3 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofathree.png"
+              src="/images/sofathree.png"
               alt="sofathree"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -55,7 +55,7 @@ const Shopfour = () => {
          {/* post 4*/}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofafour.png"
+              src="/images/sofafour.png"
               alt="sofafour"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -74,7 +74,7 @@ const Shopfour = () => {
           {/* Post 1 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/rowt1.png"
+              src="/images/rowt1.png"
               alt="sofaone"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -88,7 +88,7 @@ const Shopfour = () => {
           {/* Post 2 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/rowt2.png"
+              src="/images/rowt2.png"
               alt="sofatwo"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -102,7 +102,7 @@ const Shopfour = () => {
           {/* Post 3 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/rowt3.png"
+              src="/images/rowt3.png"
               alt="sofathree"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -119,7 +119,7 @@ const Shopfour = () => {
          {/* post 4*/}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/rowt4.png"
+              src="/images/rowt4.png"
               alt="sofafour"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -138,7 +138,7 @@ const Shopfour = () => {
           {/* Post 1 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/row1.png"
+              src="/images/row1.png"
               alt="sofaone"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -152,7 +152,7 @@ const Shopfour = () => {
           {/* Post 2 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/row2.png"
+              src="/images/row2.png"
               alt="sofatwo"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -166,7 +166,7 @@ const Shopfour = () => {
           {/* Post 3 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/row3.png"
+              src="/images/row3.png"
               alt="sofathree"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -183,7 +183,7 @@ const Shopfour = () => {
          {/* post 4*/}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/raw4.png"
+              src="/images/raw4.png"
               alt="sofafour"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -202,7 +202,7 @@ const Shopfour = () => {
           {/* Post 1 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofa4.png"
+              src="/images/sofa4.png"
               alt="sofaone"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -216,7 +216,7 @@ const Shopfour = () => {
           {/* Post 2 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/sofa7.png"
+              src="/images/sofa7.png"
               alt="sofatwo"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -230,7 +230,7 @@ const Shopfour = () => {
           {/* Post 3 */}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/raw33.png"
+              src="/images/raw33.png"
               alt="sofathree"
               className="rounded-lg w-full h-64 object-cover"
             />
@@ -247,7 +247,7 @@ const Shopfour = () => {
          {/* post 4*/}
           <div className="w-full md:w-1/3 text-center">
             <img
-              src="/raw44.png"
+              src="/images/raw44.png"
               alt="sofafour"
               className="rounded-lg w-full h-64 object-cover"
             />
