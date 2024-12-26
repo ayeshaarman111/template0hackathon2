@@ -19,7 +19,7 @@ const Hero = () => {
   {/* Right Content */}
   <div className="w-full md:w-[50%] flex justify-center items-center mt-8 md:mt-0">
     <img
-      src="sofa.png"
+      src="/images/sofa.png"
       alt="sofa"
       className="max-w-full h-auto md:h-[400px] md:w-[540px] object-contain"
     />
