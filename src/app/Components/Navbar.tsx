@@ -13,6 +13,9 @@ function Navbar() {
   return (
     <nav className="bg-[#FBEBB5] text-black p-4">
       <div className="container mx-auto flex justify-between items-center">
+        <h1>
+          
+        </h1>
       
 
         {/* Desktop Links */}
