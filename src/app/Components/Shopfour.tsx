@@ -1,286 +1,91 @@
-import React from 'react'
+'use client';
 
-const Shopfour = () => {
+import { useState, useEffect } from 'react';
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import Image from "next/image";
+import Link from "next/link";
+
+// Define the product type
+type Product = {
+  _id: string;
+  name: string;
+  imagePath: any;
+  description: string;
+  price: number;
+  category: string;
+  stockLevel: number;
+  isFeaturedProduct: boolean;
+};
+
+const showAlert = () => {
+  alert("Product added to cart");
+};
+
+export default function ShopPage() {
+  const [products, setProducts] = useState<Product[]>([]);  // State to hold products
+  const [loading, setLoading] = useState<boolean>(true);  // Loading state
+
+  // Fetch products on component mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productsData = await client.fetch('*[_type == "product"]');
+        setProducts(productsData);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;  // You can show a loading message or spinner while the data is being fetched
+  }
+
   return (
-    <div className="bg-white w-full py-8">
-      
-      
-        {/* row 1 */}
-        <div className="flex flex-col md:flex-row md:space-x-6 mt-8 space-y-8 md:space-y-0 justify-center items-center px-4">
-          {/* Post 1 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/sofaone.png"
-              alt="sofaone"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Trenton modular sofa_3
-            </p>
-            <button className="mt-2 font-medium">Rs. 25,000.00</button>
-           
-          </div>
-      
-          {/* Post 2 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/sofatwo.png"
-              alt="sofatwo"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Granite dining table with dining chair
-            </p>
-            <button className="mt-2 font-medium ">Rs. 25,000.00</button>
-           
-          </div>
-      
-          {/* Post 3 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/sofathree.png"
-              alt="sofathree"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Outdoor bar table and stool
-            </p>
-            <button className="mt-2 font-medium ">Rs. 25,000.00</button>
+    <main>
+      <div className="bg-pink-100">
+        <h1 className="text-4xl font-bold text-center p-10">Products</h1>
+        <div>
+          <ul className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14 mt-10 mb-5">
+            {products.map((product) => (
+              <li key={product._id}>
+                <Link href={`/product/${product._id}`}>
+                  {/* Generate the image URL using the urlFor function */}
+                  <Image
+                    className="relative h-60 w-22 object-cover rounded-t-xl"
+                    src={product?.imagePath} // Using urlFor to generate the image URL
+                    alt={product.name}
+                    width={300}
+                    height={200}
+                  />
+                </Link>
 
-
-
-            
-          </div>
-
-         {/* post 4*/}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/sofafour.png"
-              alt="sofafour"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Plain console with teak mirror
-            </p>
-            <button className="mt-2 font-medium ">Rs. 25,000.00</button>       
-          </div>
-
-
-        </div>
-
-
-         {/* row 2 */}
-         <div className="flex flex-col md:flex-row md:space-x-6 mt-8 space-y-8 md:space-y-0 justify-center items-center px-4">
-          {/* Post 1 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/rowt1.png"
-              alt="sofaone"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Grain coffee table
-            </p>
-            <button className="mt-2 font-medium">Rs. 15,000.00</button>
-           
-          </div>
-      
-          {/* Post 2 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/rowt2.png"
-              alt="sofatwo"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Kent coffee table
-            </p>
-            <button className="mt-2 font-medium ">Rs. 225,000.00</button>
-           
-          </div>
-      
-          {/* Post 3 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/rowt3.png"
-              alt="sofathree"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Round coffee table_color 2
-            </p>
-            <button className="mt-2 font-medium ">Rs. 251,000.00</button>
-
-
-
-            
-          </div>
-
-         {/* post 4*/}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/rowt4.png"
-              alt="sofafour"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Reclaimed teak coffee table
-            </p>
-            <button className="mt-2 font-medium ">Rs. 25,200.00</button>       
-          </div>
-
-
-        </div>
-
-        
-         {/* row 3 */}
-         <div className="flex flex-col md:flex-row md:space-x-6 mt-8 space-y-8 md:space-y-0 justify-center items-center px-4">
-          {/* Post 1 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/row1.png"
-              alt="sofaone"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Plain console_
-            </p>
-            <button className="mt-2 font-medium">Rs. 258,200.00</button>
-           
-          </div>
-      
-          {/* Post 2 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/row2.png"
-              alt="sofatwo"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Reclaimed teak Sideboard
-            </p>
-            <button className="mt-2 font-medium ">Rs. 20,000.00</button>
-           
-          </div>
-      
-          {/* Post 3 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/row3.png"
-              alt="sofathree"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            SJP_0825
-            </p>
-            <button className="mt-2 font-medium ">Rs. 200,000.00</button>
-
-
-
-            
-          </div>
-
-         {/* post 4*/}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/raw4.png"
-              alt="sofafour"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Bella chair and table
-            </p>
-            <button className="mt-2 font-medium ">Rs. 100,000.00</button>       
-          </div>
-
-
-        </div>
-
-          
-         {/* row 4 */}
-         <div className="flex flex-col md:flex-row md:space-x-6 mt-8 space-y-8 md:space-y-0 justify-center items-center px-4">
-          {/* Post 1 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/sofa4.png"
-              alt="sofaone"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Granite square side table
-            </p>
-            <button className="mt-2 font-medium">Rs. 258,800.00</button>
-           
-          </div>
-      
-          {/* Post 2 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/sofa7.png"
-              alt="sofatwo"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Asgaard sofa
-            </p>
-            <button className="mt-2 font-medium ">Rs. 250,000.00</button>
-           
-          </div>
-      
-          {/* Post 3 */}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/raw33.png"
-              alt="sofathree"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Maya sofa three seater
-            </p>
-            <button className="mt-2 font-medium ">Rs. 115,000.00</button>
-
-
-
-            
-          </div>
-
-         {/* post 4*/}
-          <div className="w-full md:w-1/3 text-center">
-            <img
-              src="/images/raw44.png"
-              alt="sofafour"
-              className="rounded-lg w-full h-64 object-cover"
-            />
-            <p className="mt-4 text-lg font-semibold">
-            Outdoor sofa set
-            </p>
-            <button className="mt-2 font-medium ">Rs. 244,000.00</button>       
-          </div>
-
-
-        </div>
-
-      
-        {/* View All Link */}
-        <div className="flex items-center justify-center mt-12 space-x-4">
-          <h1 className=" font-medium bg-[#FBEBB5] text-sm sm:text-base md:text-lg">
-            1
-          </h1>
-          <h1 className=" font-medium bg-[#FFF9E5] text-sm sm:text-base md:text-lg">
-            2 
-          </h1>
-          <h1 className=" font-medium bg-[#FFF9E5]   text-sm sm:text-base md:text-lg">
-            3
-          </h1>
-          <h1 className=" font-medium bg-[#FFF9E5] text-sm sm:text-base md:text-lg">
-            Next
-          </h1>
-
-
-
+                <div className="px-4 py-3 w-72">
+                  <h2 className="text-orange-600 font-bold text-2xl">
+                    {product.name}
+                  </h2>
+                  <p className="text-gray-500 text-sm">{product.description}</p>
+                  <p className="text-xl font-bold text-gray-700">
+                    Price: ${product.price}
+                  </p>
+                  <div className="flex flex-col text-blue-700 p-2 rounded-lg">
+                    <p>Category: {product.category}</p>
+                    <div className="font-bold border p-2 hover:bg-black hover:text-white rounded-lg">
+                      <Link href={""}>
+                        <button onClick={showAlert}>Add To Cart</button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-  )
+    </main>
+  );
 }
-
-export default Shopfour
