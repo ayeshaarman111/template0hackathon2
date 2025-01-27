@@ -10,7 +10,7 @@ import Link from "next/link";
 type Product = {
   _id: string;
   name: string;
-  imagePath: any;
+  image: any; // Image will be a reference
   description: string;
   price: number;
   category: string;
@@ -42,43 +42,43 @@ export default function ShopPage() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;  // You can show a loading message or spinner while the data is being fetched
+    return <div className="text-center text-lg font-semibold">Loading...</div>;  // You can show a loading message or spinner while the data is being fetched
   }
 
   return (
     <main>
-      <div className="bg-pink-100">
-        <h1 className="text-4xl font-bold text-center p-10">Products</h1>
+      <div className="bg-gradient-to-r from-pink-300 via-indigo-400 to-purple-500 min-h-screen py-10">
+        <h1 className="text-4xl font-bold text-white text-center p-10 drop-shadow-md">Our Featured Products</h1>
         <div>
-          <ul className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14 mt-10 mb-5">
+          <ul className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14 mt-10 mb-5 px-5">
             {products.map((product) => (
-              <li key={product._id}>
+              <li key={product._id} className="transform transition-all duration-300 hover:scale-105 hover:shadow-xl rounded-lg bg-white overflow-hidden">
                 <Link href={`/product/${product._id}`}>
                   {/* Generate the image URL using the urlFor function */}
-                  <Image
-                    className="relative h-60 w-22 object-cover rounded-t-xl"
-                    src={product?.imagePath} // Using urlFor to generate the image URL
-                    alt={product.name}
-                    width={300}
-                    height={200}
-                  />
+                  <div className="relative h-60 w-72 flex justify-center items-center overflow-hidden rounded-t-xl">
+                    <Image
+                      className="object-cover w-full h-full transition-transform duration-300 ease-in-out transform hover:scale-110"
+                      src={urlFor(product?.image).url()} // Generate URL from image reference
+                      alt={product.name}
+                      width={288}  // Image width
+                      height={180}  // Image height
+                    />
+                  </div>
                 </Link>
 
-                <div className="px-4 py-3 w-72">
-                  <h2 className="text-orange-600 font-bold text-2xl">
-                    {product.name}
-                  </h2>
-                  <p className="text-gray-500 text-sm">{product.description}</p>
-                  <p className="text-xl font-bold text-gray-700">
-                    Price: ${product.price}
-                  </p>
-                  <div className="flex flex-col text-blue-700 p-2 rounded-lg">
-                    <p>Category: {product.category}</p>
-                    <div className="font-bold border p-2 hover:bg-black hover:text-white rounded-lg">
-                      <Link href={""}>
-                        <button onClick={showAlert}>Add To Cart</button>
-                      </Link>
-                    </div>
+                <div className="px-6 py-4">
+                  <h2 className="text-xl font-semibold text-gray-800 mb-2">{product.name || 'Unnamed Product'}</h2>
+                  <p className="text-gray-600 text-sm mb-4">{product.description || 'No description available.'}</p>
+                  <p className="text-xl font-bold text-gray-900 mb-4">${product.price || 'N/A'}</p>
+                  <p className="text-sm text-gray-500 mb-4">Category: {product.category || 'Uncategorized'}</p>
+
+                  <div className="flex justify-center items-center">
+                    <button
+                      onClick={showAlert}
+                      className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out"
+                    >
+                      Add To Cart
+                    </button>
                   </div>
                 </div>
               </li>

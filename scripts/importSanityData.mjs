@@ -29,7 +29,7 @@ async function uploadImageToSanity(imageUrl) {
     console.log(`Image uploaded successfully: ${asset._id}`);
     return asset._id;
   } catch (error) {
-    console.error('Failed to upload image:', imageUrl, error.message);
+    console.error(`Failed to upload image for product: ${imageUrl}`, error.message);
     return null;
   }
 }
@@ -54,13 +54,13 @@ async function importData() {
       const sanityProduct = {
         _type: 'product',
         id: product.id,
-        name: product.name,
-        category: product.category,
-        description: product.description,
-        discountPercentage: product.discountPercentage,
-        isFeaturedProduct: product.isFeaturedProduct,
-        stockLevel: product.stockLevel,
-        price: parseFloat(product.price),
+        name: product.name || 'No Name Provided',
+        category: product.category || 'Uncategorized',
+        description: product.description || 'No Description',
+        discountPercentage: product.discountPercentage || 0,
+        isFeaturedProduct: product.isFeaturedProduct || false,
+        stockLevel: product.stockLevel || 0,
+        price: parseFloat(product.price) || 0,
         image: imageRef
           ? {
               _type: 'image',
@@ -70,7 +70,7 @@ async function importData() {
               },
             }
           : undefined,
-        imagePath: product.imagePath, // Store original image URL
+        imagePath: product.imagePath || '', // Keep fallback empty string
       };
 
       await client.create(sanityProduct);
