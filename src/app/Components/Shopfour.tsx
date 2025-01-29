@@ -55,7 +55,7 @@ export default function ShopPage() {
               <li key={product._id} className="transform transition-all duration-300 hover:scale-105 hover:shadow-xl rounded-lg bg-white overflow-hidden">
                 <Link href={`/product/${product._id}`}>
                   {/* Generate the image URL using the urlFor function */}
-                  <div className="relative h-60 w-72 flex justify-center items-center overflow-hidden rounded-t-xl">
+                  <div className="relative h-60 w-82 flex justify-center items-center overflow-hidden rounded-t-xl">
                     <Image
                       className="object-cover w-full h-full transition-transform duration-300 ease-in-out transform hover:scale-110"
                       src={urlFor(product?.image).url()} // Generate URL from image reference
