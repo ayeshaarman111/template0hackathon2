@@ -9,6 +9,14 @@ const product = {
       type: 'string',
     },
     {
+      name:"slug",
+      type:"slug",
+      title:"slug",
+      options:{
+        source:"id"
+      }
+    },
+    {
       name: 'name',
       title: 'Name',
       type: 'string',
