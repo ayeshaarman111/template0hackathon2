@@ -1,4 +1,6 @@
-"use client"
+// context/CartContext.tsx
+
+"use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
 
@@ -7,8 +9,7 @@ type Product = {
   _id: string;
   name: string;
   price: number;
-  image: any; // Assuming image is a url or object
-  slug: { current: string } | null;
+  image: string;
   quantity: number;
 };
 
@@ -16,8 +17,8 @@ interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
+  checkout: () => void;  // Checkout function added here
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -27,15 +28,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const addToCart = (product: Product) => {
     setCart((prevCart) => {
-      // Check if the product is already in the cart
       const existingProduct = prevCart.find((item) => item._id === product._id);
       if (existingProduct) {
-        // If the product exists, increase the quantity
         return prevCart.map((item) =>
           item._id === product._id ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
-        // If the product does not exist, add it to the cart
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
@@ -45,20 +43,24 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart((prevCart) => prevCart.filter((product) => product._id !== productId));
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
-    setCart((prevCart) => 
-      prevCart.map((product) =>
-        product._id === productId ? { ...product, quantity } : product
-      )
-    );
-  };
-
   const clearCart = () => {
     setCart([]);
   };
 
+  // Checkout function: clears the cart and logs the order
+  const checkout = () => {
+    if (cart.length === 0) {
+      console.log("Your cart is empty!");
+      return;
+    }
+
+    // Simulate an order submission (Replace with actual API call if needed)
+    console.log("Checkout successful! Order details:", cart);
+    setCart([]);  // Clear the cart after checkout
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, checkout }}>
       {children}
     </CartContext.Provider>
   );

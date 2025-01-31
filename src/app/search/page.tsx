@@ -11,7 +11,7 @@ import Link from "next/link";
 type Product = {
   _id: string;
   name: string;
-  image: any;
+  image: string;
   description: string;
   price: number;
   slug: { current: string } | null;

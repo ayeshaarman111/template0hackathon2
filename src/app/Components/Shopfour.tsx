@@ -12,15 +12,12 @@ import { useCart } from '../context/CartContext';  // Import the useCart hook
 type Product = {
   _id: string;
   name: string;
-  image: any;
+  image: string;
   description: string;
   price: number;
   slug: { current: string } | null;
 };
 
-const showAlert = () => {
-  alert("Product added to cart");
-};
 
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);  // State to hold products
@@ -63,7 +60,7 @@ export default function ShopPage() {
 
   return (
     <main>
-      <div className="bg-gradient-to-r from-pink-300 via-indigo-400 to-purple-500 min-h-screen py-10">
+      <div className="bg-[#FAF4F4]  min-h-screen py-10">
         
         {/* Success message with higher z-index and larger size */}
         {showMessage && (
@@ -73,7 +70,7 @@ export default function ShopPage() {
           </div>
         )}
 
-        <h1 className="text-4xl font-bold text-white text-center p-10 drop-shadow-md">Our Featured Products</h1>
+        <h1 className="text-4xl font-bold text-black text-center p-10 drop-shadow-md">Our Featured Products</h1>
 
         <div>
           <ul className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14 mt-10 mb-5 px-5">
