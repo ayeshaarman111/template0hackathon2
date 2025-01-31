@@ -5,9 +5,12 @@ import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { CiSearch, CiHeart } from "react-icons/ci";
 import Link from "next/link"; // Import Link for navigation
+import { useCart } from '../context/CartContext'; // Import the useCart hook
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false); // State to manage mobile menu visibility
+  const { cart } = useCart(); // Access the cart context
+  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0); // Calculate total items in the cart
 
   return (
     <nav className="bg-[#FBEBB5] text-black p-4 shadow-lg">
@@ -89,9 +92,17 @@ function Navbar() {
 
           {/* Shopping Cart Icon */}
           <Link href="/cart">
-            <AiOutlineShoppingCart 
-              className="transition-all duration-300 text-[#6A4C3C] hover:text-[#D32F2F] transform hover:scale-110 hover:rotate-12"
-            />
+            <div className="relative">
+              <AiOutlineShoppingCart 
+                className="transition-all duration-300 text-[#6A4C3C] hover:text-[#D32F2F] transform hover:scale-110 hover:rotate-12"
+              />
+              {/* Display cart item count */}
+              {cartItemCount > 0 && (
+                <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartItemCount}
+                </span>
+              )}
+            </div>
           </Link>
         </div>
 
