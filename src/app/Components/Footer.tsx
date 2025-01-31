@@ -11,7 +11,7 @@ const Footer = () => {
      
      <p className="text-gray-400">
        400 University Drive Suite 200<br/>
-       Coral Gables, FL 33134 USA
+       Coral Gables, FL 35634 USA
      </p>
    </div>
 
