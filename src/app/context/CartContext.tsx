@@ -11,6 +11,7 @@ type Product = {
   price: number;
   image: string;
   quantity: number;
+  slug: { current: string } | null | undefined;
 };
 
 interface CartContextType {

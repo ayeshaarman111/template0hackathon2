@@ -47,10 +47,12 @@ async function importData() {
     for (const product of products) {
       let imageRef = null;
 
+      // Upload the image if imagePath exists
       if (product.imagePath) {
         imageRef = await uploadImageToSanity(product.imagePath);
       }
 
+      // Create the Sanity product object with the slug
       const sanityProduct = {
         _type: 'product',
         id: product.id,
@@ -70,9 +72,15 @@ async function importData() {
               },
             }
           : undefined,
-        imagePath: product.imagePath || '', // Keep fallback empty string
+        imagePath: product.imagePath || '',
+        slug: {
+          _type: 'slug',
+          current: product.id,  // Assuming you're using 'id' as the base for the slug
+        }
       };
+      
 
+      // Create the product document in Sanity
       await client.create(sanityProduct);
       console.log(`Product created in Sanity: ${sanityProduct.id}`);
     }

@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { useState, useEffect } from 'react';
 import { AiOutlineCheckCircle } from 'react-icons/ai';  // Green checkmark icon
@@ -15,9 +15,8 @@ type Product = {
   image: string;
   description: string;
   price: number;
-  slug: { current: string } | null;
+  slug?: { current: string } | null;  // Explicitly define the slug structure
 };
-
 
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);  // State to hold products
@@ -51,7 +50,7 @@ export default function ShopPage() {
       price: product.price,
       quantity: 1,
       image: product.image,  // Ensure to pass the product image here
-      slug: product.slug,
+      slug:product.slug,    // Passing slug, ensuring it exists and is valid
     });
 
     setShowMessage(true);  // Show success message
@@ -76,12 +75,12 @@ export default function ShopPage() {
           <ul className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14 mt-10 mb-5 px-5">
             {products.map((product) => (
               <li key={product._id} className="transform transition-all duration-300 hover:scale-105 hover:shadow-xl rounded-lg bg-white overflow-hidden">
-                {product.slug && product.slug.current ? (
+                {product.slug?.current ? (  // Optional chaining to safely check slug
                   <Link href={`/product/${product.slug.current}`}>
                     <div className="relative h-60 w-82 flex justify-center items-center overflow-hidden rounded-t-xl">
                       <Image
                         className="object-cover w-full h-full transition-transform duration-300 ease-in-out transform hover:scale-110"
-                        src={urlFor(product?.image).url()}
+                        src={urlFor(product?.image).url() ?? '/path/to/placeholder-image.jpg'}  // Use a fallback image if urlFor is undefined
                         alt={product.name}
                         width={288}
                         height={180}
