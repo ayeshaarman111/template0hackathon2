@@ -13,7 +13,8 @@ interface CartItem {
   name: string;
   price: number;
   quantity: number;
-  image: string;  // You can replace 'any' with a more specific type if you know the structure of the image.
+  image: string; 
+  slug: { current: string } | null | undefined; // You can replace 'any' with a more specific type if you know the structure of the image.
 }
 
 const CartPage = () => {
