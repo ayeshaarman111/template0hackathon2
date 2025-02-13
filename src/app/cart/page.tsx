@@ -80,10 +80,10 @@ const CartPage = () => {
     <div className="bg-[#F7F7F7] min-h-screen py-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <h1 className="text-5xl font-bold text-[#3E2723] drop-shadow-lg mb-3">
+          <h1 className="text-4xl sm:text-5xl font-bold text-[#3E2723] drop-shadow-lg mb-3">
             Your Shopping Cart
           </h1>
-          <p className="text-xl font-medium text-[#6A4C3C]">
+          <p className="text-lg sm:text-xl font-medium text-[#6A4C3C]">
             Check out your selected items and enjoy shopping with us!
           </p>
           <div className="mt-5 text-[#D32F2F] text-xl">
@@ -135,7 +135,7 @@ const CartPage = () => {
         {cart.length > 0 && (
           <div className="space-y-8">
             {cart.map((item: CartItem) => (
-              <div key={item._id} className="bg-white rounded-lg shadow-lg p-6 flex justify-between items-center border-t-4 border-[#6A4C3C]">
+              <div key={item._id} className="bg-white rounded-lg shadow-lg p-6 flex flex-col sm:flex-row justify-between items-center border-t-4 border-[#6A4C3C] space-y-4 sm:space-y-0">
                 <div className="flex items-center space-x-4">
                   <img
                     src={item.image ? urlFor(item.image).url() : '/path/to/placeholder-image.jpg'}
@@ -182,10 +182,10 @@ const CartPage = () => {
               </p>
             </div>
 
-            <div className="flex justify-between mt-6">
+            <div className="flex justify-between mt-6 flex-col sm:flex-row">
               <button
                 onClick={clearCart}
-                className="px-6 py-3 bg-[#8B5E3C] text-white rounded-lg hover:bg-[#6A4C3C] transition"
+                className="px-6 py-3 bg-[#8B5E3C] text-white rounded-lg hover:bg-[#6A4C3C] transition w-full sm:w-auto"
               >
                 Clear Cart
               </button>
@@ -193,7 +193,7 @@ const CartPage = () => {
               {/* Use Link component to navigate to the checkout page */}
               <Link href="/Checkout">
                 <button
-                  className="px-6 py-3 bg-[#3E2723] text-white rounded-lg hover:bg-[#5D4037] transition"
+                  className="px-6 py-3 bg-[#3E2723] text-white rounded-lg hover:bg-[#5D4037] transition mt-4 sm:mt-0 w-full sm:w-auto"
                 >
                   Proceed to Checkout
                 </button>
